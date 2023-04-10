@@ -1,0 +1,18 @@
+.hover_title {
+  position: relative;
+}
+
+.hover_title::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--second-color);
+  transition: width 0.3s ease;
+}
+
+.hover_title:hover::before {
+  width: 100%;
+}

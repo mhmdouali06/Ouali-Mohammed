@@ -1,0 +1,5 @@
+React Spring: This library provides a simple way to create animations using a physics-based approach. It can be used to animate text, as well as other components. You can install it using npm with the command npm install react-spring.
+
+React Text Loop: This library allows you to create a looped animation of text. It's great for creating headlines or other attention-grabbing text. You can install it using npm with the command npm install react-text-loop.
+
+Framer Motion: This library provides a powerful set of tools for creating animations in React. It can be used to animate text, as well as other components. You can install it using npm with the command npm install framer-motion.
