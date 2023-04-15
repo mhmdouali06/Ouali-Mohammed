@@ -27,7 +27,7 @@ const Home = () => {
   }, [currentIndex]);
 
   useEffect(() => {
-    const fullText = `I'm a developer with 2 years of experience in HTML, CSS, JavaScript,
+    const fullText = ` developer web  with 3 years of experience in HTML, CSS, JavaScript,
     jQuery, and React for building user-friendly web applications. I've
     also used Symfony framework to build efficient back-end systems. I'm
     proficient in using Axios to interact with APIs and create dynamic
