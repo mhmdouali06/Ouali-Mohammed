@@ -5,6 +5,10 @@
 a:hover {
   color: var(--second-color);
 }
+.secondTitle {
+  color: var(--second-color) !important;
+  font-weight: bold;
+}
 .MuiPaper-root {
   color: white !important;
   background-color: rgba(0, 0, 0, 0.87) !important;

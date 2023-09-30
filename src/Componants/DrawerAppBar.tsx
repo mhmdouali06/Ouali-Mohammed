@@ -19,6 +19,7 @@ import { AiFillLinkedin } from "react-icons/ai";
 import { BsFillFilePdfFill } from "react-icons/bs";
 import styles from "../assets/css/AppBar.module.css";
 import pdf from "../assets/pdf/Cv Ouali Mohammed.pdf";
+import { NavLink } from "react-router-dom";
 
 interface Props {
   /**
@@ -50,15 +51,15 @@ export default function DrawerAppBar(props: Props) {
           <ListItem
             key={item}
             disablePadding
-            className="d-flex flex-column align-items-center"
+            className="d-flex flex-column align-items-center "
           >
             <ListItemButton sx={{ textAlign: "center" }}>
-              <Button
-                href={`#${item}`}
-                className="btn btn-none text-white text-center"
+              <NavLink
+                to={`#${item}`}
+                className="btn btn-none text-white text-center "
               >
                 {item}
-              </Button>
+              </NavLink>
             </ListItemButton>
           </ListItem>
         ))}

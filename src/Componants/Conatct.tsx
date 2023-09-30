@@ -3,6 +3,7 @@ import styles from "../assets/css/Contact.module.css";
 import { AiOutlineMail, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { MdPhoneEnabled } from "react-icons/md";
 import { BiArrowToTop } from "react-icons/bi";
+import { BsWhatsapp } from "react-icons/bs";
 
 const Conatct = () => {
   const [Conatct, SetConatct] = useState([
@@ -12,9 +13,9 @@ const Conatct = () => {
       url: "mailto:mhmdouali@gmail.com",
     },
     {
-      icon: <MdPhoneEnabled className="text-white" />,
+      icon: <BsWhatsapp className="text-white" />,
       title: "+212 641-082508",
-      url: "tel:+212641082508",
+      url: "https://wa.me/212641082508?text=Hello%20there!",
     },
     {
       icon: <AiFillGithub className="text-white" />,
@@ -43,17 +44,17 @@ const Conatct = () => {
           distinctio dicta eligendi nisi?
         </p>
       </div>
-      <div className="row mt-3">
-        {Conatct.map((s) => (
-          <div className="col-sm-12 col-md-6 col-lg-3 mb-5">
+      <div className="d-flex mt-3 justify-content-center mb-3">
+        {Conatct.map((s, index) => (
+          <div className="me-4">
             <a
               href={s.url}
-              key={s.title}
+              key={index}
               target="_blank"
               className="bg-dark p-3  rounded shadow  "
             >
               <label> {s.icon}</label>
-              <label className={` ${styles.color}`}>{s.title}</label>
+              {/* <label className={` ${styles.color}`}>{s.title}</label> */}
             </a>
           </div>
         ))}

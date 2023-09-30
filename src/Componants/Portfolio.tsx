@@ -8,35 +8,9 @@ import figuig from "../assets/img/figuig.png";
 import desktop from "../assets/img/desktop.jpg";
 import acua from "../assets/img/acua.png";
 import { Link } from "react-router-dom";
+import { Blogs } from "./Blogs";
 
 const Portfolio = () => {
-  const [Blogs, SetBlogs] = useState([
-    {
-      img: figuig,
-      url: "https://conseilprovincialfiguig.ma/",
-    },
-    {
-      img: asmgaz,
-      url: "http://asmgaz.fcpo.agency/index.php",
-    },
-    {
-      img: acua,
-      url: "http://acquaclima.fcpo.agency/index.php",
-    },
-    {
-      img: valinco,
-      url: "http://valinco-froid.fcpo.agency/",
-    },
-    {
-      img: pneu,
-      url: "https://pneuscom9.fcpo.agency/",
-    },
-    {
-      img: land,
-      url: "#",
-    },
-  ]);
-
   return (
     <div id="Blog" className="bg-dark text-white p-3">
       <div className="d-flex flex-column align-items-center">
@@ -50,13 +24,13 @@ const Portfolio = () => {
         </p>
       </div>
       <div className="d-flex  justify-content-center flex-wrap rounded">
-        {Blogs.map((blog) => (
+        {Blogs.map((blog: any) => (
           <div key={blog.img} className="p-2 pb-0 w-25 rounded block_image">
             <div
               className={`shadow   pb-0 mb-5  w-100  rounded ${styles.my_div}`}
               style={{ overflowY: "scroll", height: "20em" }}
             >
-              <Link to={blog.url}>
+              <Link to={`/${blog?.slug}`}>
                 <img src={blog.img} className="w-100 rounded" alt="" />
               </Link>
             </div>
