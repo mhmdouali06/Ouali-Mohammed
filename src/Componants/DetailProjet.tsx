@@ -15,8 +15,6 @@ const DetailProjet = () => {
   React.useEffect(() => {
     setBolg(Blogs.find((item: any) => item.slug == slug));
   }, [slug]);
-  console.log(blog);
-
   return (
     <div>
       <Swiper blog={blog} />
