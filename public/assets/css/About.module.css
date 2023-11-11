@@ -1,0 +1,7 @@
+h5 {
+  color: var(--second-color) !important;
+  font-weight: bold;
+}
+.nav_icon:hover {
+  color: var(--second-color);
+}

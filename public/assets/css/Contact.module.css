@@ -1,0 +1,6 @@
+.color {
+  color: var(--second-color);
+}
+.conatct {
+  border-bottom: 3px solid var(--second-color);
+}

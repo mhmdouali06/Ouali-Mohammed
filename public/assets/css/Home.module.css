@@ -1,0 +1,62 @@
+h1 {
+  position: relative;
+}
+a {
+  color: var(--second-color);
+  text-decoration: none;
+}
+.link_border {
+  display: block;
+  margin-top: 10%;
+  width: fit-content;
+  font-weight: bold;
+  color: white;
+  border: 2px solid var(--second-color);
+  padding: 2%;
+}
+.link_border:hover {
+  color: var(--second-color);
+}
+h1::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 30%;
+  display: block;
+  border-bottom: 3px solid var(--second-color);
+  border-radius: 20px;
+}
+.scender_color {
+  color: var(--second-color);
+}
+.main_image {
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
+  /* position: absolute; */
+  top: 0;
+}
+.hover_link:hover {
+  color: white !important;
+}
+.main {
+  position: relative;
+  /* max-height: 500px; */
+}
+@media screen and (max-width: 768px) {
+  img {
+    padding: 0px;
+    width: 100% !important;
+  }
+}
+/* Glitch
+Flicker
+Static
+Interference
+Vibration
+Distortion
+Corrupted
+Hacked
+Broken
+Malfunctioning
+You can use any of these names to describe an animation that looks similar to noise. However, keep in mind that these names are subjective and can mean different things to different people. It's important to choose a name that accurately describes the animation you're trying to achieve. */

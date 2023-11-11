@@ -1,0 +1,13 @@
+.color {
+  color: var(--second-color);
+}
+h6 {
+  font-weight: bold;
+}
+.my_div {
+  overflow: hidden;
+}
+
+.my_div::-webkit-scrollbar {
+  display: none;
+}

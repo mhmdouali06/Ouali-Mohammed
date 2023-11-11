@@ -1,0 +1,60 @@
+:root {
+  --primar-color: #0000;
+  --second-color: rgb(150, 150, 7);
+}
+a:hover {
+  color: var(--second-color);
+}
+.secondTitle {
+  color: var(--second-color) !important;
+  font-weight: bold;
+}
+.MuiPaper-root {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.87) !important;
+}
+body {
+  overflow-x: hidden;
+}
+/* Set the style for the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Set the style for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+/* Hide the scrollbar corner */
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+@media screen and (max-width: 991px) {
+  .block_image {
+    width: 50% !important;
+  }
+  #About p,
+  #Blog p,
+  #About h3 {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    font-size: x-small;
+  }
+  #About p,
+  #Blog p,
+  #About h3 {
+    width: 100% !important;
+  }
+  .block_image {
+    width: 100% !important;
+  }
+  #Contact p {
+    width: 100% !important;
+  }
+}

@@ -1,7 +1,7 @@
 export const Blogs = [
   {
     slug: "figuig",
-    img: "src\\assets\\img\\figuig.png",
+    img: "/assets/img/figuig.png",
     url: "https://conseilprovincialfiguig.ma/",
   },
   {
