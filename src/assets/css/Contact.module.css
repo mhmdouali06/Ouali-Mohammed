@@ -1,6 +1,100 @@
-.color {
-  color: var(--second-color);
+/* ─── Contact ────────────────────────────────────────── */
+.contact {
+  padding: 110px 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
 }
-.conatct {
-  border-bottom: 3px solid var(--second-color);
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139,92,246,.4), transparent);
+}
+.glow {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(139,92,246,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 28px;
+  text-align: center;
+}
+
+.header { margin-bottom: 60px; }
+
+/* ─── Contact cards ──────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  text-decoration: none;
+  color: var(--text);
+  transition: var(--t);
+  text-align: left;
+}
+.card:hover {
+  border-color: var(--border-h);
+  box-shadow: var(--glow-p);
+  transform: translateY(-4px);
+  color: var(--text);
+}
+
+.card_icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background: rgba(139,92,246,0.1);
+  transition: background 0.3s var(--ease);
+}
+.card:hover .card_icon { background: rgba(139,92,246,0.2); }
+
+.card_label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.card_value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ─── CTA ────────────────────────────────────────────── */
+.cta_row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
 }

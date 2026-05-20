@@ -1,133 +1,147 @@
-import React, { useEffect, useState } from "react";
-import styles from "../assets/css/Swiper.css";
+import React from "react";
+import { motion } from "framer-motion";
+import { FiExternalLink, FiArrowLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   blog?: any;
 };
 
 const Swiper: React.FC<Props> = ({ blog }) => {
-  const [activeIndex, setActiveIndex] = useState(0); // Store the active slide index
-
-  // Define your custom styles as constants
-  const carouselItemStyle = {
-    height: "70vh",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  };
-
-  const backgroundImage1 = {
-    backgroundImage:
-      "url('https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1nfGVufDB8fDB8fHww&w=1000&q=80')",
-  };
-
-  const backgroundImage2 = {
-    backgroundImage:
-      "url('https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/IMG_Academy_Logo.svg/640px-IMG_Academy_Logo.svg.png')",
-  };
-
-  const backgroundImage3 = {
-    backgroundImage:
-      "url('https://www.nationsonline.org/gallery/USA/Times-Square-New-York.jpg')",
-  };
-
-  // Function to handle slide change
-  const handleSlideChange = (event: any) => {
-    setActiveIndex(event.to);
-  };
-
-  // Listen for the 'slid.bs.carousel' event to track the active slide
-  useEffect(() => {
-    const carousel = document.getElementById("carouselExampleCaptions");
-    if (carousel) {
-      carousel.addEventListener("slid.bs.carousel", handleSlideChange);
-    }
-    return () => {
-      if (carousel) {
-        carousel.removeEventListener("slid.bs.carousel", handleSlideChange);
-      }
-    };
-  }, []);
+  const navigate = useNavigate();
 
   return (
     <div
-      id="carouselExampleCaptions "
-      className={`carousel slide mb-0 ${styles}`}
-      data-bs-ride="carousel"
+      style={{
+        position: "relative",
+        height: "65vh",
+        minHeight: 420,
+        overflow: "hidden",
+        background: "var(--bg)",
+        display: "flex",
+        alignItems: "flex-end",
+      }}
     >
-      <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          className={activeIndex === 0 ? "active" : ""}
-          aria-current={activeIndex === 0 ? "true" : "false"}
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          className={activeIndex === 1 ? "active" : ""}
-          aria-current={activeIndex === 1 ? "true" : "false"}
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          className={activeIndex === 2 ? "active" : ""}
-          aria-current={activeIndex === 2 ? "true" : "false"}
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div className="carousel-inner">
+      {/* Background image with overlay */}
+      {blog?.img && (
         <div
-          className={`carousel-item ${activeIndex === 0 ? "active" : ""}`}
-          style={{ ...carouselItemStyle, ...backgroundImage1 }}
-        >
-          <div className="carousel-caption d-none d-md-block">
-            <h1>{blog?.slug}</h1>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div
-          className={`carousel-item ${activeIndex === 1 ? "active" : ""}`}
-          style={{ ...carouselItemStyle, ...backgroundImage2 }}
-        >
-          <div className="carousel-caption d-none d-md-block">
-            <h1>{blog?.slug}</h1>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div
-          className={`carousel-item ${activeIndex === 2 ? "active" : ""}`}
-          style={{ ...carouselItemStyle, ...backgroundImage3 }}
-        >
-          <div className="carousel-caption d-none d-md-block">
-            <h1>{blog?.slug}</h1>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
-      </div>
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${blog.img})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+            filter: "brightness(0.35) saturate(0.8)",
+          }}
+        />
+      )}
+
+      {/* gradient overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to bottom, rgba(5,5,16,0.3) 0%, rgba(5,5,16,0.95) 100%)",
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "0 28px 48px",
+          width: "100%",
+        }}
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
-      </button>
+        <motion.button
+          onClick={() => navigate(-1)}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            background: "rgba(255,255,255,0.07)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 8,
+            color: "var(--text-2)",
+            fontSize: 13,
+            fontWeight: 500,
+            cursor: "pointer",
+            padding: "8px 16px",
+            marginBottom: 24,
+            backdropFilter: "blur(10px)",
+          }}
+          whileHover={{ scale: 1.03 }}
+        >
+          <FiArrowLeft /> Back
+        </motion.button>
+
+        {blog?.tag && (
+          <span
+            style={{
+              display: "inline-block",
+              padding: "5px 14px",
+              background: "rgba(139,92,246,0.15)",
+              border: "1px solid rgba(139,92,246,0.3)",
+              borderRadius: 50,
+              color: "var(--purple-l)",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              marginBottom: 14,
+            }}
+          >
+            {blog.tag}
+          </span>
+        )}
+
+        <motion.h1
+          style={{
+            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontWeight: 900,
+            letterSpacing: -2,
+            marginBottom: 16,
+          }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {blog?.title || blog?.slug}
+        </motion.h1>
+
+        <motion.p
+          style={{
+            color: "var(--text-2)",
+            fontSize: "1.05rem",
+            maxWidth: 560,
+            lineHeight: 1.7,
+            marginBottom: 24,
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          {blog?.desc}
+        </motion.p>
+
+        {blog?.url && blog?.url !== "#" && (
+          <motion.a
+            href={blog.url}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-grad"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Visit Live Site <FiExternalLink />
+          </motion.a>
+        )}
+      </div>
     </div>
   );
 };

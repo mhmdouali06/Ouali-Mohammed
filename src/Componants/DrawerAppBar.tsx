@@ -1,161 +1,132 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { RxGithubLogo } from "react-icons/rx";
-import { FaFacebookF } from "react-icons/fa";
-import { AiFillLinkedin } from "react-icons/ai";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { BsFillFilePdfFill } from "react-icons/bs";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
 import styles from "../assets/css/AppBar.module.css";
 import pdf from "../assets/pdf/Cv Ouali Mohammed.pdf";
-import { NavLink } from "react-router-dom";
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
+const NAV = [
+  { label: "Home",     href: "#Home" },
+  { label: "About",    href: "#About" },
+  { label: "Projects", href: "#Blog" },
+  { label: "Contact",  href: "#Contact" },
+];
 
-const drawerWidth = 240;
-const navItems = ["Home", "About", "Blog", "Contact"];
+export default function DrawerAppBar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen]         = useState(false);
 
-export default function DrawerAppBar(props: Props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Ouali Mohammed
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem
-            key={item}
-            disablePadding
-            className="d-flex flex-column align-items-center "
-          >
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <NavLink
-                to={`#${item}`}
-                className="btn btn-none text-white text-center "
-              >
-                {item}
-              </NavLink>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar component="nav" className="bg-dark">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            <span className={styles.hover_title}>Ouali Mohammed</span>
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button
-                key={item}
-                href={`#${item}`}
-                sx={{ color: "#fff" }}
-                className={styles.hover_title}
-              >
-                {item}
-              </Button>
+    <>
+      <motion.nav
+        className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <div className={styles.wrap}>
+          {/* Logo */}
+          <a href="#Home" className={styles.logo}>
+            <span className="gradient-text">OM</span>
+            <span className={styles.logo_dot} />
+          </a>
+
+          {/* Desktop links */}
+          <nav className={styles.links}>
+            {NAV.map((n) => (
+              <a key={n.label} href={n.href} className={styles.link}>
+                {n.label}
+              </a>
             ))}
-          </Box>
-          <div
-            className="border border-1 mx-1"
-            style={{ height: "25px" }}
-          ></div>
-          <Button
-            target="_blank"
-            sx={{ color: "#000000" }}
-            href="https://github.com/mhmdouali06"
-            className={`${styles.hover_title} bg-white mx-3`}
+          </nav>
+
+          {/* Desktop actions */}
+          <div className={styles.actions}>
+            <a
+              href="https://github.com/mhmdouali06"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.icon_btn}
+              title="GitHub"
+            >
+              <AiFillGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mohammed-ouali-24240b1aa/"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.icon_btn}
+              title="LinkedIn"
+            >
+              <AiFillLinkedin />
+            </a>
+            <a href={pdf} target="_blank" rel="noreferrer" className={styles.cv_btn}>
+              <BsFillFilePdfFill /> CV
+            </a>
+          </div>
+
+          {/* Hamburger */}
+          <button
+            className={styles.hamburger}
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
           >
-            <RxGithubLogo />
-          </Button>
-          <Button
-            sx={{ color: "#fff" }}
-            href="https://www.linkedin.com/in/mohammed-ouali-24240b1aa/"
-            target="_blank"
-            className={`${styles.hover_title} bg-primary me-3`}
+            {open ? <HiX /> : <HiMenuAlt3 />}
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className={styles.drawer}
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25 }}
           >
-            <AiFillLinkedin />
-          </Button>
-          <Button
-            sx={{ color: "#fff" }}
-            href={pdf}
-            target="_blank"
-            className={`${styles.hover_title} bg-danger`}
-          >
-            <BsFillFilePdfFill />
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box component="main">
-        <Toolbar />
-      </Box>
-    </Box>
+            {NAV.map((n) => (
+              <a
+                key={n.label}
+                href={n.href}
+                className={styles.drawer_link}
+                onClick={() => setOpen(false)}
+              >
+                {n.label}
+              </a>
+            ))}
+            <div className={styles.drawer_actions}>
+              <a
+                href="https://github.com/mhmdouali06"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.icon_btn}
+              >
+                <AiFillGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mohammed-ouali-24240b1aa/"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.icon_btn}
+              >
+                <AiFillLinkedin />
+              </a>
+              <a href={pdf} target="_blank" rel="noreferrer" className={styles.cv_btn}>
+                <BsFillFilePdfFill /> CV
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

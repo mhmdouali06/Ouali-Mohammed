@@ -9,19 +9,32 @@ import TechnologiesUsed from "./DetailProject/TechnologiesUsed";
 import CopyRight from "./CopyRight";
 import Conatct from "./Conatct";
 
-const DetailProjet = () => {
+const DetailProjet: React.FC = () => {
   const { slug } = useParams();
-  const [blog, setBolg] = React.useState<any>();
-  React.useEffect(() => {
-    setBolg(Blogs.find((item: any) => item.slug == slug));
-  }, [slug]);
+  const blog = Blogs.find((b) => b.slug === slug);
+
   return (
-    <div>
+    <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
+      {/* Hero */}
       <Swiper blog={blog} />
-      <OverView blog={blog} />
-      <Objective blog={blog} />
-      <Role blog={blog} />
-      <TechnologiesUsed blog={blog} />
+
+      {/* Detail sections */}
+      <div
+        style={{
+          maxWidth: 900,
+          margin: "0 auto",
+          padding: "64px 28px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 24,
+        }}
+      >
+        <OverView blog={blog} />
+        <Objective blog={blog} />
+        <Role blog={blog} />
+        <TechnologiesUsed blog={blog} />
+      </div>
+
       <Conatct />
       <CopyRight />
     </div>

@@ -1,0 +1,157 @@
+/* ─── Design System ─────────────────────────────────── */
+:root {
+  --bg:          #050510;
+  --bg-2:        #0c0c22;
+  --bg-card:     rgba(255, 255, 255, 0.04);
+  --bg-card-h:   rgba(255, 255, 255, 0.07);
+  --border:      rgba(255, 255, 255, 0.07);
+  --border-h:    rgba(139, 92, 246, 0.45);
+
+  --purple:      #8b5cf6;
+  --purple-l:    #a78bfa;
+  --blue:        #3b82f6;
+  --cyan:        #06b6d4;
+  --green:       #10b981;
+
+  --grad:        linear-gradient(135deg, #8b5cf6, #3b82f6);
+  --grad-2:      linear-gradient(135deg, #3b82f6, #06b6d4);
+  --glow-p:      0 0 40px rgba(139, 92, 246, 0.3);
+  --glow-b:      0 0 40px rgba(59, 130, 246, 0.3);
+
+  --text:        #f8fafc;
+  --text-2:      #94a3b8;
+  --text-3:      #475569;
+
+  --r:           16px;
+  --r-sm:        8px;
+  --r-lg:        24px;
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --t:           all 0.3s var(--ease);
+}
+
+/* ─── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--grad); border-radius: 3px; }
+::selection                 { background: rgba(139,92,246,.3); color: #fff; }
+
+/* ─── Shared Utilities ───────────────────────────────── */
+.gradient-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 50px;
+  color: var(--purple-l);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  color: var(--text-2);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* ─── Shared Buttons ─────────────────────────────────── */
+.btn-grad {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  background: var(--grad);
+  border: none;
+  border-radius: var(--r-sm);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--t);
+  text-decoration: none;
+}
+.btn-grad:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(139,92,246,.4);
+  color: #fff;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--t);
+  text-decoration: none;
+}
+.btn-outline:hover {
+  border-color: var(--purple);
+  color: var(--purple-l);
+  transform: translateY(-3px);
+}
+
+/* ─── Glass Card ─────────────────────────────────────── */
+.glass {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  backdrop-filter: blur(12px);
+  transition: var(--t);
+}
+.glass:hover {
+  background: var(--bg-card-h);
+  border-color: var(--border-h);
+  box-shadow: var(--glow-p);
+}
+
+/* ─── Section Wrapper ────────────────────────────────── */
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}

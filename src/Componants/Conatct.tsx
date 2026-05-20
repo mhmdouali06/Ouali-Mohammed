@@ -1,68 +1,131 @@
-import React, { useState } from "react";
-import styles from "../assets/css/Contact.module.css";
-import { AiOutlineMail, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
-import { MdPhoneEnabled } from "react-icons/md";
-import { BiArrowToTop } from "react-icons/bi";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import {
+  AiOutlineMail,
+  AiFillGithub,
+  AiFillLinkedin,
+} from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";
+import { FiSend } from "react-icons/fi";
+import styles from "../assets/css/Contact.module.css";
 
-const Conatct = () => {
-  const [Conatct, SetConatct] = useState([
-    {
-      icon: <AiOutlineMail className="text-white" />,
-      title: "mhmdouali@gmail.com",
-      url: "mailto:mhmdouali@gmail.com",
-    },
-    {
-      icon: <BsWhatsapp className="text-white" />,
-      title: "+212 641-082508",
-      url: "https://wa.me/212641082508?text=Hello%20there!",
-    },
-    {
-      icon: <AiFillGithub className="text-white" />,
-      title: "mhmdouali06",
-      url: "https://github.com/mhmdouali06",
-    },
-    {
-      icon: <AiFillLinkedin className="text-white" />,
-      title: "Ouali Mohammed",
-      url: "https://www.linkedin.com/in/mohammed-ouali-24240b1aa/",
-    },
-  ]);
+const LINKS = [
+  {
+    icon: <AiOutlineMail />,
+    label: "Email",
+    value: "mhmdouali@gmail.com",
+    url: "mailto:mhmdouali@gmail.com",
+    color: "#8b5cf6",
+  },
+  {
+    icon: <BsWhatsapp />,
+    label: "WhatsApp",
+    value: "+212 641-082508",
+    url: "https://wa.me/212641082508?text=Hello!",
+    color: "#25d366",
+  },
+  {
+    icon: <AiFillGithub />,
+    label: "GitHub",
+    value: "mhmdouali06",
+    url: "https://github.com/mhmdouali06",
+    color: "#ffffff",
+  },
+  {
+    icon: <AiFillLinkedin />,
+    label: "LinkedIn",
+    value: "Ouali Mohammed",
+    url: "https://www.linkedin.com/in/mohammed-ouali-24240b1aa/",
+    color: "#0a66c2",
+  },
+];
+
+const Conatct: React.FC = () => {
+  const ref    = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <div
-      id="Contact"
-      style={{ backgroundColor: "#404040" }}
-      className={`p-3 text-center text-white ${styles.conatct}`}
-    >
-      <div id="About" className="d-flex flex-column align-items-center">
-        <h5 className={`${styles.h5} w-50)`}>CONTACT US</h5>
-        <h3 className="w-50">Ways To Contact Me</h3>
-        <p className="w-50">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Necessitatibus, doloribus, eveniet, repellat odio libero consequuntur
-          hic laudantium voluptatem quam cumque a nobis! Facere rem eum quos,
-          distinctio dicta eligendi nisi?
-        </p>
-      </div>
-      <div className="d-flex mt-3 justify-content-center mb-3">
-        {Conatct.map((s, index) => (
-          <div className="me-4">
-            <a
-              href={s.url}
-              key={index}
+    <section ref={ref} id="Contact" className={styles.contact}>
+      <div className={styles.glow} />
+      <div className={styles.wrap}>
+        {/* header */}
+        <div className={styles.header}>
+          <motion.span
+            className="section-tag"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            CONTACT
+          </motion.span>
+          <motion.h2
+            className="section-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            Let's <span className="gradient-text">Work Together</span>
+          </motion.h2>
+          <motion.p
+            className="section-subtitle"
+            style={{ margin: "0 auto" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Have a project in mind or just want to say hello?
+            I'm always open to new opportunities and collaborations.
+          </motion.p>
+        </div>
+
+        {/* contact cards */}
+        <div className={styles.grid}>
+          {LINKS.map((l, i) => (
+            <motion.a
+              key={l.label}
+              href={l.url}
               target="_blank"
-              className="bg-dark p-3  rounded shadow  "
+              rel="noreferrer"
+              className={styles.card}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
             >
-              <label> {s.icon}</label>
-              {/* <label className={` ${styles.color}`}>{s.title}</label> */}
-            </a>
-          </div>
-        ))}
+              <div
+                className={styles.card_icon}
+                style={{ color: l.color, background: `${l.color}18` }}
+              >
+                {l.icon}
+              </div>
+              <div>
+                <p className={styles.card_label}>{l.label}</p>
+                <p className={styles.card_value}>{l.value}</p>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          className={styles.cta_row}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <a href="mailto:mhmdouali@gmail.com" className="btn-grad">
+            Send a Message <FiSend />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mohammed-ouali-24240b1aa/"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-outline"
+          >
+            <AiFillLinkedin /> Connect on LinkedIn
+          </a>
+        </motion.div>
       </div>
-      <div className="w-0" style={{ float: "right" }}>
-        <BiArrowToTop className="text-white" />
-      </div>
-    </div>
+    </section>
   );
 };
 
