@@ -5,7 +5,7 @@ export const Blogs = [
     tag: "PHP / Symfony",
     img: "/assets/img/figuig.png",
     url: "#",
-    desc: "Official provincial council website for Figuig — news, jobs & cultural showcase.",
+    desc: "Official provincial council website for Figuig  news, jobs & cultural showcase.",
     overView:
       "Conseil Provincial Figuig is a dynamic website dedicated to showcasing the unique features and opportunities within the Figuig province. The platform brings attention to cultural richness, economic potential, and employment opportunities.",
     objective:
@@ -33,7 +33,7 @@ export const Blogs = [
     tag: "PHP / Symfony",
     img: "/assets/img/snolm.png",
     url: "https://snolm.ma/",
-    desc: "Official website for Morocco's National Society of Ophthalmologists — bilingual AR/FR.",
+    desc: "Official website for Morocco's National Society of Ophthalmologists  bilingual AR/FR.",
     overView:
       "SNOLM (Société Nationale des Ophtalmologistes du Maroc) is the professional hub for Moroccan ophthalmologists, providing news, a member directory, and professional resources in Arabic and French.",
     objective:
@@ -61,7 +61,7 @@ export const Blogs = [
     tag: "React / PHP",
     img: "/assets/img/tutassur.png",
     url: "https://tutassur.com/",
-    desc: "French insurance platform — simplified coverage selection and contract management.",
+    desc: "French insurance platform  simplified coverage selection and contract management.",
     overView:
       "Tutassur simplifies insurance selection and management for French users. Clients can personalize their coverage, manage contracts, track quotes, and access a professional partner network for urgent claims. Features an interactive insurance product selector.",
     objective:
@@ -80,7 +80,7 @@ export const Blogs = [
       "Corporate website built for a gas distribution company, presenting their services, team, and contact information with a professional design.",
     objective:
       "Service presentation, Contact forms, Clean corporate design, Mobile responsiveness",
-    role: "Full stack developer — design and implementation.",
+    role: "Full stack developer  design and implementation.",
     technologes: "PHP, HTML, CSS, JavaScript, MySQL",
   },
   {
@@ -94,7 +94,7 @@ export const Blogs = [
       "Website for an HVAC company showcasing their heating, ventilation and air-conditioning services with a clean modern interface.",
     objective:
       "Service catalog, Contact forms, SEO-friendly structure, Responsive design",
-    role: "Full stack developer — design and implementation.",
+    role: "Full stack developer  design and implementation.",
     technologes: "PHP, HTML, CSS, JavaScript",
   },
   {
@@ -108,7 +108,7 @@ export const Blogs = [
       "Website for a refrigeration company offering cold-chain solutions and maintenance services with a professional, industry-appropriate design.",
     objective:
       "Service showcase, Clean design, Contact integration, Mobile-first",
-    role: "Full stack developer — design and implementation.",
+    role: "Full stack developer  design and implementation.",
     technologes: "PHP, HTML, CSS, JavaScript",
   },
   {
@@ -122,7 +122,7 @@ export const Blogs = [
       "E-commerce platform for a tyre retailer featuring a full product catalog, pricing comparison, and appointment booking system.",
     objective:
       "Product catalog, Appointment booking, Responsive design, Admin management",
-    role: "Full stack developer — design and implementation.",
+    role: "Full stack developer  design and implementation.",
     technologes: "PHP, HTML, CSS, JavaScript, MySQL",
   },
   {
@@ -136,7 +136,7 @@ export const Blogs = [
       "E-learning web platform supporting course creation, student enrollment, and real-time progress tracking with an intuitive dashboard.",
     objective:
       "Course creation, Student portal, Progress tracking, Admin dashboard",
-    role: "Full stack developer — architecture, frontend and backend.",
+    role: "Full stack developer  architecture, frontend and backend.",
     technologes: "React, PHP, MySQL, REST API",
   },
 ];
